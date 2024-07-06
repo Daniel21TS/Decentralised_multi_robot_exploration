@@ -1,0 +1,31 @@
+#footprint: [[-0.105, -0.105], [-0.105, 0.105], [0.041, 0.105], [0.041, -0.105]]
+robot_radius: 0.225
+
+# pre-Hydro
+#obstacle_range: 3.0          # default 2.5
+#raytrace_range: 3.5          # default 3.0
+#inflation_radius: 1.0 #0.125 # 0.2
+#cost_scaling_factor: 3.0 # 24.0 #15.0 
+#map_type: costmap #pre-Hydro ROS distro
+#observation_sources: scan
+#scan: {sensor_frame: base_laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true}
+#transform_tolerance: 2.0
+
+# as of Hydro ROS distro
+plugins: 
+    - {name: static_map,       type: "costmap_2d::StaticLayer"}
+    - {name: obstacles,        type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation,        type: "costmap_2d::InflationLayer"}
+
+obstacles:
+    observation_sources: scan
+    scan: {sensor_frame: base_laser_link, data_type: LaserScan, topic: scan, marking: true, clearing: true, inf_is_valid: true, track_unknown_space: true, footprint_clearing_enabled: true}
+    transform_tolerance : 0.5
+    publish_frequency: 2.0
+    obstacle_range: 3.0          # default 2.5
+    raytrace_range: 3.5          # default 3.0
+
+inflation:
+    inflation_radius: 0.55        # 1.0 0.125 0.2
+    cost_scaling_factor: 10.0     # 3.0 24.0 15.0
+

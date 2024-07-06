@@ -1,0 +1,59 @@
+TrajectoryPlannerROS: # base_local_planner
+
+ # velocities, accelerations, kinematic restrictions
+ max_vel_x: 1.0                # default 0.5
+ min_vel_x: 0.1                # default 0.1
+ escape_vel: -0.2              # default -0.1
+ 
+ max_vel_theta: 2.0            # 2.0 default 1.0
+ min_vel_theta: -2.0           # default -1.0
+ min_in_place_vel_theta: 0.4   # default 0.4
+ 
+ acc_lim_x: 2.5                # default 2.5
+ acc_lim_y: 0.0                # default 2.5
+ 
+ holonomic_robot: false        # default true
+ 
+ 
+ # goal tolerance parameters
+ 
+ xy_goal_tolerance: 0.2        # default 0.1
+ yaw_goal_tolerance: 0.2       # default 0.05 - if goal tolerance is latched, if the robot ever reaches the goal xy location it will simply rotate in place, even if it ends up outside the goal tolerance while it is doing so
+ latch_xy_goal_tolerance: false #default false
+ 
+ 
+ # forward simulation parameters
+ 
+ sim_time: 2.0                 # 2.5  default 1.0 seconds - the amount of time to forward-simulate trajectories in seconds 
+ sim_granularity: 0.025        # default 0.025 - the step size, in meters, to take between points on a given trajectory
+ angular_sim_granularity: 0.025 #default 0.025 - the step size, in radians, to take between angular samples on a given trajectory
+ vx_samples: 10                # default 3 - the number of samples to use when exploring the x velocity space
+ vtheta_samples: 40            # default 20 - the number of samples to use when exploring the theta velocity space
+ controller_frequency: 8.0     # 5.0  default 20.0
+ 
+ 
+ # trajectory scoring parameters
+ # cost = 
+ # pdist_scale * (distance to path from the endpoint of the trajectory in map cells or meters depending on the meter_scoring parameter) 
+ # + gdist_scale * (distance to local goal from the endpoint of the trajectory in map cells or meters depending on the meter_scoring parameter) 
+ # + occdist_scale * (maximum obstacle cost along the trajectory in obstacle cost (0-254))
+ meter_scoring: true           # default false - whether the goal_distance_bias and path_distance_bias parameters should assume that goal_distance and path_distance are expressed in meters (default is in cells)
+ path_distance_bias: 0.6       # default 0.6 - the weighting for how much the controller should stay close to the path it was given, maximal possible value is 5.0
+ goal_distance_bias: 0.8       # default 0.8 - the weighting for how much the controller should attempt to reach its local goal, also controls speed, maximal possible value is 5.0
+ occdist_scale: 0.01           # default 0.01 - the weighting for how much the controller should attempt to avoid obstacles
+ heading_lookahead: 2.0        # default 0.325 - how far to look ahead in meters when scoring different in-place-rotation trajectories
+ heading_scoring: false        # default false - whether to score based on the robot's heading to the path or its distance from the path
+ heading_scoring_timestep: 0.8 # default 0.0 - how far to look ahead in time in seconds along the simulated trajectory when using heading scoring
+ dwa: true                     # default true - whether to use the Dynamic Window Approach (DWA) or Trajectory Rollout (NOTE: In our experience DWA worked as well as Trajectory Rollout and is computationally less expensive. It is possible that robots with extremely poor acceleration limits could gain from running Trajectory Rollout, but we recommend trying DWA first.)
+ publish_cost_grid_pc: false   # default false - whether or not to publish the cost grid that the planner will use when planning. When true, a sensor_msgs/PointCloud2 will be available on the ~<name>/cost_cloud topic. Each point cloud represents the cost grid and has a field for each individual scoring function component as well as the overall cost for each cell, taking the scoring parameters into account
+ 
+ 
+ # oscillation prevention parameter
+ 
+ oscillation_reset_dist: 0.05  # default 0.05 - how far the robot must travel in meters before oscillation flags are reset
+ 
+ 
+ # global plan parameters
+ 
+ prune_plan: true              # default true - defines whether or not to eat up the plan as the robot moves along the path. If set to true, points will fall off the end of the plan once the robot moves 1 meter past them
+
