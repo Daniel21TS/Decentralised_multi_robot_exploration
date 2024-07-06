@@ -1,0 +1,26 @@
+include "freiburg_campus.inc"
+
+pioneer
+(		  
+  	# Can refer to the robot by this name
+  	name "pioneer0"
+  	pose [ 55.0 35.0 0.0 0.0 ]
+	color "blue"
+)
+
+pioneer
+(		  
+  	# Can refer to the robot by this name
+  	name "pioneer1"
+  	pose [ 55.0 10.0 0.0 0.0 ]
+	color "red"
+)
+
+pioneer
+(		  
+  	# Can refer to the robot by this name
+  	name "pioneer2"
+  	pose [ 25.0 35.0 0.0 0.0 ]
+	color "green"
+)
+
