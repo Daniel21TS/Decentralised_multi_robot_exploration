@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<launch>
+  <master auto="start"/>
+  <param name="/use_sim_time" value="true"/>
+
+  <!--Pionner 3dx -->
+  <arg name="model" default="$(find p3dx_description)/urdf/pioneer3dx.xml"/>
+  <param name="robot_description" textfile="$(arg model)" />
+
+  <!--Stage World-->
+  <include file="$(find multi_robot_exploration)/launch/Freiburg_079/6pioneers_stage_freiburg_079.launch" />
+
+  <!--Robot 0-->
+  <group ns="robot_0">
+    <arg name="prefix" value="robot_0"/>
+    <arg name="init_pose_x" value="10.0"/>
+    <arg name="init_pose_y" value="8.0"/>
+    <arg name="init_pose_z" value="0.0"/>
+    <arg name="init_pose_yaw" value="0.0"/>
+
+    <include file="$(find multi_robot_exploration)/launch/p3dx_description.launch">
+      <arg name="tf_prefix" value="$(arg prefix)" />
+    </include>
+
+    <!--OGMapping -->
+    <include file="$(find multi_robot_exploration)/launch/Freiburg_079/OGM_freiburg_079.launch">
+      <arg name="namespace" value="$(arg prefix)" />
+      <arg name="init_pose_x" value="$(arg init_pose_x)"/>
+      <arg name="init_pose_y" value="$(arg init_pose_y)"/>
+      <arg name="init_pose_z" value="$(arg init_pose_z)"/>
+      <arg name="init_pose_yaw" value="$(arg init_pose_yaw)"/>
+    </include>
+
+    <!--Explore Node -->
+    <node pkg="multi_robot_exploration" type="multi_explore_freiburg_079.py" name="explore" output="screen">
+      <param name="robot_namespace" value="$(arg prefix)"/>
+    </node>
+    
+  </group>
+
+  <!--Robot 1-->
+  <group ns="robot_1">
+    <arg name="prefix" value="robot_1"/>
+    <arg name="init_pose_x" value="10.0"/>
+    <arg name="init_pose_y" value="8.0"/>
+    <arg name="init_pose_z" value="0.0"/>
+    <arg name="init_pose_yaw" value="0.0"/>
+
+    <include file="$(find multi_robot_exploration)/launch/p3dx_description.launch">
+      <arg name="tf_prefix" value="$(arg prefix)" />
+    </include>
+
+    <!--OGMapping -->
+    <include file="$(find multi_robot_exploration)/launch/Freiburg_079/OGM_freiburg_079.launch">
+      <arg name="namespace" value="$(arg prefix)" />
+      <arg name="init_pose_x" value="$(arg init_pose_x)"/>
+      <arg name="init_pose_y" value="$(arg init_pose_y)"/>
+      <arg name="init_pose_z" value="$(arg init_pose_z)"/>
+      <arg name="init_pose_yaw" value="$(arg init_pose_yaw)"/>
+    </include>
+
+    <!--Explore Node  -->
+    <node pkg="multi_robot_exploration" type="multi_explore_freiburg_079.py" name="explore" output="screen">
+      <param name="robot_namespace" value="$(arg prefix)"/>
+    </node> 
+    
+  </group>
+
+  <!--Robot 2-->
+  <group ns="robot_2">
+    <arg name="prefix" value="robot_2"/>
+    <arg name="init_pose_x" value="10.0"/>
+    <arg name="init_pose_y" value="8.0"/>
+    <arg name="init_pose_z" value="0.0"/>
+    <arg name="init_pose_yaw" value="0.0"/>
+
+    <include file="$(find multi_robot_exploration)/launch/p3dx_description.launch">
+      <arg name="tf_prefix" value="$(arg prefix)" />
+    </include>
+
+    <!--OGMapping -->
+    <include file="$(find multi_robot_exploration)/launch/Freiburg_079/OGM_freiburg_079.launch">
+      <arg name="namespace" value="$(arg prefix)" />
+      <arg name="init_pose_x" value="$(arg init_pose_x)"/>
+      <arg name="init_pose_y" value="$(arg init_pose_y)"/>
+      <arg name="init_pose_z" value="$(arg init_pose_z)"/>
+      <arg name="init_pose_yaw" value="$(arg init_pose_yaw)"/>
+    </include>
+
+    <!--Explore Node  -->
+    <node pkg="multi_robot_exploration" type="multi_explore_freiburg_079.py" name="explore" output="screen">
+      <param name="robot_namespace" value="$(arg prefix)"/>
+    </node> 
+    
+  </group>
+
+  <!--Robot 3-->
+  <group ns="robot_3">
+    <arg name="prefix" value="robot_3"/>
+    <arg name="init_pose_x" value="10.0"/>
+    <arg name="init_pose_y" value="8.0"/>
+    <arg name="init_pose_z" value="0.0"/>
+    <arg name="init_pose_yaw" value="0.0"/>
+
+    <include file="$(find multi_robot_exploration)/launch/p3dx_description.launch">
+      <arg name="tf_prefix" value="$(arg prefix)" />
+    </include>
+
+    <!--OGMapping -->
+    <include file="$(find multi_robot_exploration)/launch/Freiburg_079/OGM_freiburg_079.launch">
+      <arg name="namespace" value="$(arg prefix)" />
+      <arg name="init_pose_x" value="$(arg init_pose_x)"/>
+      <arg name="init_pose_y" value="$(arg init_pose_y)"/>
+      <arg name="init_pose_z" value="$(arg init_pose_z)"/>
+      <arg name="init_pose_yaw" value="$(arg init_pose_yaw)"/>
+    </include>
+
+    <!--Explore Node  -->
+    <node pkg="multi_robot_exploration" type="multi_explore_freiburg_079.py" name="explore" output="screen">
+      <param name="robot_namespace" value="$(arg prefix)"/>
+    </node> 
+    
+  </group>
+
+  <!--Robot 4-->
+  <group ns="robot_4">
+    <arg name="prefix" value="robot_4"/>
+    <arg name="init_pose_x" value="10.0"/>
+    <arg name="init_pose_y" value="8.0"/>
+    <arg name="init_pose_z" value="0.0"/>
+    <arg name="init_pose_yaw" value="0.0"/>
+
+    <include file="$(find multi_robot_exploration)/launch/p3dx_description.launch">
+      <arg name="tf_prefix" value="$(arg prefix)" />
+    </include>
+
+    <!--OGMapping -->
+    <include file="$(find multi_robot_exploration)/launch/Freiburg_079/OGM_freiburg_079.launch">
+      <arg name="namespace" value="$(arg prefix)" />
+      <arg name="init_pose_x" value="$(arg init_pose_x)"/>
+      <arg name="init_pose_y" value="$(arg init_pose_y)"/>
+      <arg name="init_pose_z" value="$(arg init_pose_z)"/>
+      <arg name="init_pose_yaw" value="$(arg init_pose_yaw)"/>
+    </include>
+
+    <!--Explore Node  -->
+    <node pkg="multi_robot_exploration" type="multi_explore_freiburg_079.py" name="explore" output="screen">
+      <param name="robot_namespace" value="$(arg prefix)"/>
+    </node> 
+    
+  </group>
+
+  <!--Robot 5-->
+  <group ns="robot_5">
+    <arg name="prefix" value="robot_5"/>
+    <arg name="init_pose_x" value="10.0"/>
+    <arg name="init_pose_y" value="8.0"/>
+    <arg name="init_pose_z" value="0.0"/>
+    <arg name="init_pose_yaw" value="0.0"/>
+
+    <include file="$(find multi_robot_exploration)/launch/p3dx_description.launch">
+      <arg name="tf_prefix" value="$(arg prefix)" />
+    </include>
+
+    <!--OGMapping -->
+    <include file="$(find multi_robot_exploration)/launch/Freiburg_079/OGM_freiburg_079.launch">
+      <arg name="namespace" value="$(arg prefix)" />
+      <arg name="init_pose_x" value="$(arg init_pose_x)"/>
+      <arg name="init_pose_y" value="$(arg init_pose_y)"/>
+      <arg name="init_pose_z" value="$(arg init_pose_z)"/>
+      <arg name="init_pose_yaw" value="$(arg init_pose_yaw)"/>
+    </include>
+
+    <!--Explore Node  -->
+    <node pkg="multi_robot_exploration" type="multi_explore_freiburg_079.py" name="explore" output="screen">
+      <param name="robot_namespace" value="$(arg prefix)"/>
+    </node> 
+    
+  </group>
+
+  <!--group ns="map_merge"-->
+  <node pkg="multirobot_map_merge" type="map_merge" respawn="false" name="map_merge" output="screen">
+      <param name="robot_map_topic" value="map"/>
+      <param name="robot_map_updates_topic" value="map_updates"/>
+      <param name="known_init_poses" value="true"/>
+      <!--param name="robot_namespace" value=""/-->
+      <param name="merged_map_topic" value="/map_merge"/>
+      <param name="world_frame" value="map_merged"/>
+      <param name="known_init_poses" value="true"/>
+      <param name="merging_rate" value="2.0"/>
+      <param name="discovery_rate" value="0.05"/>
+      <param name="estimation_rate" value="0.5"/>
+      <param name="estimation_confidence" value="1.0"/>
+  </node>
+
+  <node pkg="multi_robot_exploration" type="map_merge_upd_freiburg_079.py" name="map_merge_upd" output="screen"/>
+  
+  <!--Transformada para colocar /robot_0/cmap e map sobrepostos-->
+  <node pkg="tf" type="static_transform_publisher" name="static_tf_map_to_map_merged" args="-18.5 -7.0 0.0 0.0 0.0 0.0 map_merged map 10"  /> 
+  <!-- -18.5+5.0=-13.5 -10.5+5.0=-5.5 half of the initial map size + 2*offset -> check in gmapping_navigation.launch -->
+
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find multi_robot_exploration)/rviz/multi_robot.rviz" />
+
+</launch>
+
+
