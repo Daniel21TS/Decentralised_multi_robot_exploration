@@ -4,17 +4,23 @@ The overall aim of this dissertation is to implement an algorithm capable of giv
 
 ## HOW TO CREATE A WORKSPACE FOR IT ##
 
+1º -> ROS installation. As i use UBUNTU "Focal", i installed ROS "Noetic". You can follow this tutorial (https://wiki.ros.org/noetic/Installation/Ubuntu)
 
+2º -> Create a ROS workspace and download all the files in this repository to that workspace. (Follow this tutorial https://wiki.ros.org/catkin/Tutorials/create_a_workspace)
+
+3º -> Then you just need to solve the dependencies of the ROS package.
+You can type "rosdep check multi_robot_exploration" to check all package dependencies
+Then, you need to type "rosdep install --from-paths src --ignore-src -r -y" to solve all of them.
 
 ## HOW TO USE IT ##
 
-1º -> Create a ROS workspace and download all the files in this repository to that workspace.
+1º -> Open cmd window and type "cd WORKSPACE_CREATED"
 
-2º -> Open cmd window and type "cd WORKSPACE_CREATED"
+2º -> Also in cmd window type "source devel/setup.bash"
 
-3º -> Also in cmd window type "source devel/setup.bash"
+3º -> Then, for example, type "roslaunch multi_robot_exploration freiburg_079_2_robos.launch" to start a exploration in Freiburg 079 map with two robots
 
-4º -> Then, for example, type "roslaunch multi_robot_exploration freiburg_079_2_robos.launch" to start a exploration in Freiburg 079 map with two robots
+4º -> Make sure the files are executable
 
 ## WHAT CAN I DO WITH IT ##
 
@@ -34,3 +40,6 @@ To change the scanning method used by the robots, all you have to do is access, 
                             <param name="robot_namespace" value="$(arg prefix)"/>
                           </node>
 
+
+
+If you have any questions, you can send an email to danitsantos.21@gmail.com
