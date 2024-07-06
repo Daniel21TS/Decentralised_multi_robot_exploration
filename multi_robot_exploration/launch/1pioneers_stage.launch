@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>  
+  <node pkg="stage_ros" type="stageros" name="stageros"
+args="$(find multi_robot_exploration)/worlds/building/1pioneer_building.world" respawn="false">
+    <param name="/use_sim_time" value="true"/>
+    <param name="base_watchdog_timeout" value="0.2"/>
+    <remap from="robot_0/base_scan" to="robot_0/scan"/>
+  </node>
+</launch>
